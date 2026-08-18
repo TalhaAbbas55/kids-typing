@@ -2,7 +2,7 @@
 
 A fun, browser-based typing practice game built with React. Colorful bubbles float up the screen, each labeled with a letter or number, and you pop them by pressing the matching key before they reach the top. It's a lightweight way to build typing speed and keyboard accuracy while having a bit of fun.
 
-🔗 **Live URL:** [https://www.google.com](https://www.google.com) *(placeholder, will be updated with the real deployed link)*
+🔗 **Live URL:** [https://kids-typing-omega.vercel.app/]
 
 ## How It Works
 
