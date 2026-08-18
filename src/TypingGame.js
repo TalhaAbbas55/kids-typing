@@ -34,7 +34,7 @@ const TypingGame = () => {
     bottomRow: false,
     numbers: false,
     uppercase: false,
-    speed: 3, // 1-10 scale, 1 = very slow, 10 = very fast
+    speed: 2, // 1-14 scale, 1 = ultra slow, 14 = very fast
     removeSpecialChars: true,
   });
 
@@ -140,9 +140,9 @@ const TypingGame = () => {
     
     const availableKeys = getAvailableKeys();
     
-    // Calculate spawn interval based on speed (1-10)
-    // Speed 1 = 3000ms (very slow), Speed 10 = 800ms (fast)
-    const baseInterval = 3200 - (settings.speed * 200);
+    // Calculate spawn interval based on speed (1-14)
+    // Speed 1 = 5700ms (ultra slow), Speed 14 = 1800ms (fast)
+    const baseInterval = 6000 - (settings.speed * 300);
     
     const spawnBubble = () => {
       const newBubble = {
@@ -152,7 +152,7 @@ const TypingGame = () => {
         x: Math.random() * 80 + 10, // 10% to 90% of screen width
         startTime: Date.now(),
         // Duration in seconds - slower speeds = longer duration
-        duration: Math.max(8, 18 - settings.speed),
+        duration: Math.max(10, 28 - settings.speed * 1.3),
       };
       
       setBubbles(prev => [...prev, newBubble]);
@@ -388,16 +388,18 @@ const TypingGame = () => {
           <label className="setting-label">
             Bubble Speed: {settings.speed}
             <span className="speed-label">
-              {settings.speed <= 2 ? '🐢 Very Slow' : 
-               settings.speed <= 4 ? '🐌 Slow' :
-               settings.speed <= 6 ? '🚶 Medium' :
-               settings.speed <= 8 ? '🏃 Fast' : '🚀 Very Fast'}
+              {settings.speed <= 2 ? '🦥 Ultra Slow' : 
+               settings.speed <= 4 ? '🐢 Very Slow' : 
+               settings.speed <= 6 ? '🐌 Slow' :
+               settings.speed <= 8 ? '🚶 Medium' :
+               settings.speed <= 10 ? '🏃 Fast' :
+               settings.speed <= 12 ? '🚀 Very Fast' : '⚡ Super Fast'}
             </span>
           </label>
           <input
             type="range"
             min="1"
-            max="10"
+            max="14"
             value={settings.speed}
             onChange={(e) => setSettings({...settings, speed: parseInt(e.target.value)})}
             className="speed-slider"
